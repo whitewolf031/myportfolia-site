@@ -1,0 +1,91 @@
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - static:/var/www/static:ro
+      - media:/var/www/media:ro
+    depends_on:
+      - api
+      - frontend
+    networks:
+      - edge
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - edge
+    environment:
+      - VITE_API_URL=http://localhost/api
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./api:/app
+      - static:/app/staticfiles
+      - media:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+      notifier:
+        condition: service_healthy
+    networks:
+      - edge
+      - internal
+
+  notifier:
+    build:
+      context: ./notifier
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./notifier:/app
+    networks:
+      - internal
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio_db}
+      POSTGRES_USER: ${POSTGRES_USER:-portfolio_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-portfolio_secure_password_change_me}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U ${POSTGRES_USER:-portfolio_user} -d ${POSTGRES_DB:-portfolio_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+networks:
+  edge:
+    driver: bridge
+  internal:
+    driver: bridge
+    internal: true
+
+volumes:
+  pgdata:
+  media:
+  static:
