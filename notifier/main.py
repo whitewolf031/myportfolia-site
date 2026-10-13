@@ -91,7 +91,7 @@ class NotificationPayload(BaseModel):
     message: str = Field(..., max_length=3000)
     created_at: Optional[str] = ""
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health_check():
     return {"status": "healthy", "service": "notifier"}
 

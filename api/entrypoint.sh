@@ -34,6 +34,7 @@ python manage.py collectstatic --noinput --clear || true
 echo "==> Ensuring superuser exists..."
 python << 'EOF'
 import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
 import django
 django.setup()
 from django.contrib.auth import get_user_model
