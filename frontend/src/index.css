@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0B1736;
+  background-image: 
+    radial-gradient(900px 520px at 80% 4%, rgba(80, 120, 255, 0.38), transparent 62%),
+    radial-gradient(560px 380px at 6% 20%, rgba(90, 176, 255, 0.16), transparent 60%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #EAF0FF;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, #FFFFFF 0%, #5AB0FF 60%, #8C9BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.card-base {
+  background: linear-gradient(160deg, #162B63, #102250);
+  border: 1px solid #2A417F;
+  border-radius: 14px;
+}
+
+.card-contact {
+  background: linear-gradient(135deg, #1E3FA0, #12245A 60%);
+  border: 1px solid #2A417F;
+  border-radius: 14px;
+}
+
+/* Photo Frame */
+.photo-frame {
+  background: linear-gradient(135deg, #5AB0FF, #7C8CFF, #FFB547);
+  padding: 2px;
+  border-radius: 22px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #5AB0FF, #8C9BFF);
+  color: #06122B;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #4A64A8;
+  color: #EAF0FF;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-ghost:hover:not(:disabled) {
+  border-color: #5AB0FF;
+  background-color: rgba(90, 176, 255, 0.08);
+}
+
+/* Chips / Tags */
+.chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #C4D3F7;
+  background: rgba(90, 176, 255, 0.1);
+  border: 1px solid #2A417F;
+  border-radius: 9999px;
+  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Accessibility: focus ring */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #5AB0FF;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
