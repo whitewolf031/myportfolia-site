@@ -29,10 +29,10 @@ RUN mkdir -p /app/staticfiles /app/media \
 
 USER appuser
 
-EXPOSE 8000
+EXPOSE 8001
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=25s --retries=5 \
-  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health/')" || exit 1
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/api/health/')" || exit 1
 
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "60"]
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8001", "--workers", "3", "--timeout", "60"]
