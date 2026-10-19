@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Project } from '../../types';
+import { getMediaUrl } from '../../api/client';
 
 interface ProjectsSectionProps {
   projects: Project[];
@@ -38,7 +39,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) =>
                 <div className="w-full aspect-[16/10] bg-gradient-to-br from-[#1E3FA0]/40 to-[#12245A] border-b border-border-subtle/50 flex items-center justify-center overflow-hidden relative">
                   {project.image ? (
                     <img
-                      src={project.image}
+                      src={getMediaUrl(project.image)}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"

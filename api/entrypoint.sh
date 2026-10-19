@@ -31,6 +31,10 @@ python manage.py migrate --noinput
 echo "==> Collecting static files..."
 python manage.py collectstatic --noinput --clear || true
 
+echo "==> Ensuring media directories exist and permissions are set..."
+mkdir -p /app/media/profile_photos /app/media/resumes /app/media/project_images || true
+chmod -R 775 /app/media || true
+
 echo "==> Ensuring superuser exists..."
 python << 'EOF'
 import os
