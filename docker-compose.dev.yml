@@ -1,19 +1,19 @@
 services:
-  gateway:
-    build:
-      context: ./gateway
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    volumes:
-      - static:/var/www/static:ro
-      - media:/var/www/media:ro
-    depends_on:
-      - api
-      - frontend
-    networks:
-      - edge
+  # gateway:
+  #   build:
+  #     context: ./gateway
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - static:/var/www/static:ro
+  #     - media:/var/www/media:ro
+  #   depends_on:
+  #     - api
+  #     - frontend
+  #   networks:
+  #     - edge
 
   frontend:
     build:
