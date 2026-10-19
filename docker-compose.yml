@@ -28,6 +28,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+    - "127.0.0.1:3078:3078"
     networks:
       - edge
     healthcheck:
@@ -42,6 +44,8 @@ services:
       context: ./api
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+      - "127.0.0.1:8001:8001"
     env_file:
       - .env
     volumes:
@@ -67,6 +71,8 @@ services:
       context: ./notifier
       dockerfile: Dockerfile
     restart: unless-stopped
+    ports:
+      - "127.0.0.1:8001:8001"
     env_file:
       - .env
     networks:
