@@ -37,6 +37,7 @@ class Profile(models.Model):
     telegram_username = models.CharField(max_length=100, default="@Sardorbek_Ergashev", verbose_name="Telegram")
     github_url = models.CharField(max_length=255, default="[Havola]", verbose_name="GitHub")
     linkedin_url = models.CharField(max_length=255, default="[Havola]", verbose_name="LinkedIn")
+    instagram_url = models.CharField(max_length=255, default="[Havola]", blank=True, verbose_name="Instagram")
 
     updated_at = models.DateTimeField(auto_now=True)
 

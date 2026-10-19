@@ -1,5 +1,6 @@
 import React from 'react';
 import { Profile } from '../../types';
+import { getMediaUrl } from '../../api/client';
 
 interface HeroSectionProps {
   profile: Profile | null;
@@ -7,9 +8,6 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
   const fullName = profile?.full_name || 'Sardorbek Ergashev';
-  const nameParts = fullName.split(' ');
-  const firstName = nameParts[0] || 'Sardorbek';
-  const lastName = nameParts.slice(1).join(' ') || 'Ergashev';
 
   const headline = profile?.headline || 'Backend dasturchi. Python va Django bilan ishonchli tizimlar, Telegram botlar va admin panellar yarataman.';
   const bio = profile?.short_bio || '[Yashash joyi haqida 2-3 jumla]';
@@ -25,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
               <div className="w-full h-full rounded-[20px] bg-gradient-to-br from-[#162B63] to-[#0E1A3D] overflow-hidden flex items-center justify-center relative">
                 {profile?.photo ? (
                   <img
-                    src={profile.photo}
+                    src={getMediaUrl(profile.photo)}
                     alt={fullName}
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -51,10 +49,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
               </div>
             )}
 
-            {/* H1 Heading */}
-            <h1 className="font-heading font-bold text-[44px] sm:text-[56px] lg:text-[72px] leading-[1.05] tracking-tight mb-6">
-              <span className="block text-gradient">{firstName}</span>
-              <span className="block text-gradient">{lastName}</span>
+            {/* H1 Heading - Name displayed side by side */}
+            <h1 className="font-heading font-bold text-[36px] sm:text-[50px] lg:text-[64px] leading-[1.1] tracking-tight mb-6">
+              <span className="text-gradient inline">{fullName}</span>
             </h1>
 
             {/* Headline */}
@@ -90,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
               <div className="w-full h-full rounded-[20px] bg-gradient-to-br from-[#162B63] to-[#0E1A3D] overflow-hidden flex items-center justify-center relative">
                 {profile?.photo ? (
                   <img
-                    src={profile.photo}
+                    src={getMediaUrl(profile.photo)}
                     alt={fullName}
                     className="w-full h-full object-cover"
                     loading="lazy"

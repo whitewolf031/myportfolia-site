@@ -9,6 +9,7 @@ export const AdminContactInfo: React.FC = () => {
   const [telegram, setTelegram] = useState('');
   const [github, setGithub] = useState('');
   const [linkedin, setLinkedin] = useState('');
+  const [instagram, setInstagram] = useState('');
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export const AdminContactInfo: React.FC = () => {
         setTelegram(p.telegram_username || '');
         setGithub(p.github_url || '');
         setLinkedin(p.linkedin_url || '');
+        setInstagram(p.instagram_url || '');
         setLoading(false);
       })
       .catch((err) => {
@@ -36,6 +38,7 @@ export const AdminContactInfo: React.FC = () => {
     formData.append('telegram_username', telegram);
     formData.append('github_url', github);
     formData.append('linkedin_url', linkedin);
+    formData.append('instagram_url', instagram);
 
     try {
       await adminUpdateProfile(formData);
@@ -133,6 +136,19 @@ export const AdminContactInfo: React.FC = () => {
               value={linkedin}
               onChange={(e) => setLinkedin(e.target.value)}
               placeholder="https://linkedin.com/in/..."
+              className="w-full px-3.5 py-2.5 rounded-lg bg-[#0E1B3B] border border-border-subtle text-text-main text-sm focus:outline-none focus:border-accent"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-mono text-text-subtitle mb-1.5">
+              Instagram havola yoki username
+            </label>
+            <input
+              type="text"
+              value={instagram}
+              onChange={(e) => setInstagram(e.target.value)}
+              placeholder="https://instagram.com/... yoki @username"
               className="w-full px-3.5 py-2.5 rounded-lg bg-[#0E1B3B] border border-border-subtle text-text-main text-sm focus:outline-none focus:border-accent"
             />
           </div>

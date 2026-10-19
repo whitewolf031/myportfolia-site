@@ -71,8 +71,9 @@ services:
       context: ./notifier
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:8001:8001"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     env_file:
       - .env
     networks:
@@ -107,7 +108,6 @@ networks:
     driver: bridge
   internal:
     driver: bridge
-    internal: true
 
 volumes:
   pgdata:

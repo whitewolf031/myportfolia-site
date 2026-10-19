@@ -7,6 +7,7 @@ import {
   adminUpdateStat,
   adminCreateStat,
   adminDeleteStat,
+  getMediaUrl,
 } from '../../api/client';
 import { Loader2, Upload, AlertCircle, CheckCircle2, Plus, Trash2 } from 'lucide-react';
 
@@ -225,7 +226,7 @@ export const AdminProfile: React.FC = () => {
               <div className="flex items-center gap-4">
                 {profile?.photo && (
                   <img
-                    src={profile.photo}
+                    src={getMediaUrl(profile.photo)}
                     alt="Current"
                     className="w-16 h-16 rounded-xl object-cover border border-border-subtle shrink-0"
                   />

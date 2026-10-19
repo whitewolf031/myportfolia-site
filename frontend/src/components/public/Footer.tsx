@@ -11,6 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
   const telegram = profile?.telegram_username || '@Sardorbek_Ergashev';
   const github = profile?.github_url || '[Havola]';
   const linkedin = profile?.linkedin_url || '[Havola]';
+  const instagram = profile?.instagram_url;
 
   return (
     <footer className="w-full border-t border-border-subtle/40 py-10 mt-12 bg-page/90">
@@ -28,6 +29,19 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
           >
             Telegram
           </a>
+          {instagram && instagram !== '[Havola]' && (
+            <>
+              <span className="text-border-subtle">|</span>
+              <a
+                href={instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram.replace('@', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Instagram
+              </a>
+            </>
+          )}
           <span className="text-border-subtle">|</span>
           <a
             href={github.startsWith('http') ? github : '#'}

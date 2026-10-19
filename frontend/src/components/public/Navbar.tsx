@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, FileDown } from 'lucide-react';
 import { Profile } from '../../types';
+import { getMediaUrl } from '../../api/client';
 
 interface NavbarProps {
   profile: Profile | null;
@@ -45,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
         <div className="hidden md:flex items-center">
           {profile?.resume ? (
             <a
-              href={profile.resume}
+              href={getMediaUrl(profile.resume)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-ghost text-xs px-4 py-2 flex items-center gap-2 hover:border-accent"
@@ -94,7 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
             ))}
             {profile?.resume && (
               <a
-                href={profile.resume}
+                href={getMediaUrl(profile.resume)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}

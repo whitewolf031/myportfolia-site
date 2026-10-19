@@ -1,7 +1,28 @@
 from rest_framework import serializers
 from .models import Profile, Stat, SkillGroup, Skill, Service, Project, TimelineItem, Testimonial
 
+class RelativeImageField(serializers.ImageField):
+    def to_representation(self, value):
+        if not value:
+            return None
+        try:
+            return value.url
+        except AttributeError:
+            return None
+
+class RelativeFileField(serializers.FileField):
+    def to_representation(self, value):
+        if not value:
+            return None
+        try:
+            return value.url
+        except AttributeError:
+            return None
+
 class ProfileSerializer(serializers.ModelSerializer):
+    photo = RelativeImageField(required=False, allow_null=True)
+    resume = RelativeFileField(required=False, allow_null=True)
+
     class Meta:
         model = Profile
         fields = "__all__"
@@ -37,6 +58,8 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProjectSerializer(serializers.ModelSerializer):
+    image = RelativeImageField(required=False, allow_null=True)
+
     class Meta:
         model = Project
         fields = "__all__"

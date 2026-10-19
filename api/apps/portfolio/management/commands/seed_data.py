@@ -17,6 +17,7 @@ class Command(BaseCommand):
                 "telegram_username": "@Sardorbek_Ergashev",
                 "github_url": "[Havola]",
                 "linkedin_url": "[Havola]",
+                "instagram_url": "[Havola]",
             },
         )
         if created:

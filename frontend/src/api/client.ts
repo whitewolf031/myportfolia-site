@@ -1,6 +1,15 @@
 import { AuthResponse, ContactMessage, PortfolioData, Profile, Project, Service, Skill, SkillGroup, Stat, Testimonial, TimelineItem } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+
+export function getMediaUrl(url: string | null | undefined): string {
+  if (!url) return '';
+  // If the page is on HTTPS and URL starts with HTTP, upgrade protocol to prevent mixed content
+  if (url.startsWith('http://') && typeof window !== 'undefined' && window.location.protocol === 'https:') {
+    return url.replace('http://', 'https://');
+  }
+  return url;
+}
 
 export function getAccessToken(): string | null {
   return localStorage.getItem('access_token');

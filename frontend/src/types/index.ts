@@ -10,6 +10,7 @@ export interface Profile {
   telegram_username: string;
   github_url: string;
   linkedin_url: string;
+  instagram_url?: string;
   updated_at: string;
 }
 
