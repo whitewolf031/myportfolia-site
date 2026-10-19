@@ -1,6 +1,6 @@
 import { AuthResponse, ContactMessage, PortfolioData, Profile, Project, Service, Skill, SkillGroup, Stat, Testimonial, TimelineItem } from '../types';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export function getAccessToken(): string | null {
   return localStorage.getItem('access_token');
