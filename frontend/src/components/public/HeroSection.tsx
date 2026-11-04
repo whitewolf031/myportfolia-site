@@ -18,7 +18,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Mobile Photo Frame (shown first on mobile, hidden on lg) */}
-          <div className="block lg:hidden w-full max-w-[340px] mx-auto">
+          <div className="block lg:hidden w-full max-w-[340px] mx-auto animate-fade-in-up [animation-delay:150ms]">
             <div className="photo-frame aspect-square w-full">
               <div className="w-full h-full rounded-[20px] bg-gradient-to-br from-[#162B63] to-[#0E1A3D] overflow-hidden flex items-center justify-center relative">
                 {profile?.photo ? (
@@ -41,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* Open to work badge */}
             {profile?.open_to_work && (
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-chip-bg border border-border-subtle mb-6 sm:mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-chip-bg border border-border-subtle mb-6 sm:mb-8 animate-fade-in-up [animation-delay:50ms]">
                 <span className="w-2 h-2 rounded-full bg-accent-amber animate-pulse" />
                 <span className="text-xs font-mono text-chip-text tracking-wide">
                   Yangi loyihalar uchun ochiqman
@@ -50,22 +50,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
             )}
 
             {/* H1 Heading - Name displayed side by side */}
-            <h1 className="font-heading font-bold text-[36px] sm:text-[50px] lg:text-[64px] leading-[1.1] tracking-tight mb-6">
+            <h1 className="font-heading font-bold text-[36px] sm:text-[50px] lg:text-[64px] leading-[1.1] tracking-tight mb-6 animate-fade-in-up [animation-delay:120ms]">
               <span className="text-gradient inline">{fullName}</span>
             </h1>
 
             {/* Headline */}
-            <p className="text-text-subtitle text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-xl mb-4">
+            <p className="text-text-subtitle text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-xl mb-4 animate-fade-in-up [animation-delay:200ms]">
               {headline}
             </p>
 
             {/* Short Bio */}
-            <p className="text-text-muted text-sm sm:text-base font-normal leading-relaxed max-w-xl mb-8">
+            <p className="text-text-muted text-sm sm:text-base font-normal leading-relaxed max-w-xl mb-8 animate-fade-in-up [animation-delay:280ms]">
               {bio}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto animate-fade-in-up [animation-delay:360ms]">
               <a
                 href="#aloqa"
                 className="btn-primary text-sm sm:text-base px-7 py-3 text-center w-full sm:w-auto font-semibold shadow-lg shadow-accent/20"
@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
           </div>
 
           {/* Desktop Photo Frame (lg:col-span-5) */}
-          <div className="hidden lg:block lg:col-span-5 w-full max-w-[420px] ml-auto">
+          <div className="hidden lg:block lg:col-span-5 w-full max-w-[420px] ml-auto animate-fade-in-up [animation-delay:200ms]">
             <div className="photo-frame aspect-[4/5] w-full">
               <div className="w-full h-full rounded-[20px] bg-gradient-to-br from-[#162B63] to-[#0E1A3D] overflow-hidden flex items-center justify-center relative">
                 {profile?.photo ? (

@@ -30,6 +30,9 @@ services:
     restart: unless-stopped
     ports:
     - "127.0.0.1:3078:3078"
+    depends_on:
+      api:
+        condition: service_healthy
     networks:
       - edge
     healthcheck:

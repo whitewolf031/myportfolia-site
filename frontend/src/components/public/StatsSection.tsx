@@ -9,23 +9,21 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ stats }) => {
   if (!stats || stats.length === 0) return null;
 
   return (
-    <section className="py-6 sm:py-10">
+    <section className="py-6 sm:py-10 animate-fade-in-up [animation-delay:420ms]">
       <div className="max-w-container mx-auto px-5 sm:px-8">
         <div className="card-base p-6 sm:p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 divide-y-0 md:divide-x divide-border-subtle/60">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
             {stats.map((stat, idx) => (
               <div
                 key={stat.id || idx}
-                className={`flex flex-col items-center justify-center text-center ${
-                  idx > 0 ? 'md:pl-6' : ''
-                }`}
+                className="w-full flex flex-col items-center justify-center text-center py-2 px-2"
               >
-                <span className="font-heading font-bold text-3xl sm:text-4xl lg:text-[42px] text-text-main tracking-tight mb-1">
+                <div className="font-heading font-bold text-3xl sm:text-4xl lg:text-[42px] text-text-main tracking-tight leading-none mb-2 text-center select-none w-full">
                   {stat.value}
-                </span>
-                <span className="font-body text-xs sm:text-sm text-text-muted font-normal">
+                </div>
+                <div className="font-body text-xs sm:text-sm text-text-muted font-normal text-center leading-snug select-none w-full">
                   {stat.label}
-                </span>
+                </div>
               </div>
             ))}
           </div>

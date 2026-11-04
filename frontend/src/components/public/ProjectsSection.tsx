@@ -3,6 +3,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { Project } from '../../types';
 import { getMediaUrl } from '../../api/client';
 
+import { ScrollReveal } from '../common/ScrollReveal';
+
 interface ProjectsSectionProps {
   projects: Project[];
 }
@@ -13,28 +15,30 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) =>
   return (
     <section id="loyihalar" className="py-12 sm:py-20">
       <div className="max-w-container mx-auto px-5 sm:px-8">
-        {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
-            04 / loyihalar
-          </span>
-          <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
-            Nima qurganman
-          </h2>
-        </div>
+        <ScrollReveal>
+          {/* Section Header */}
+          <div className="mb-8 sm:mb-12">
+            <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
+              03 / loyihalar
+            </span>
+            <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
+              Nima qurganman
+            </h2>
+          </div>
+        </ScrollReveal>
 
         {/* Projects Grid: 3 cols desktop, 1 col mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const techs = project.technologies
               ? project.technologies.split(',').map((t) => t.trim()).filter(Boolean)
               : [];
 
             return (
-              <div
-                key={project.id}
-                className="card-base overflow-hidden flex flex-col justify-between group hover:border-accent/40 transition-all duration-300"
-              >
+              <ScrollReveal key={project.id} delayMs={index * 100}>
+                <div
+                  className="card-base h-full overflow-hidden flex flex-col justify-between group cursor-default"
+                >
                 {/* Image / Image Placeholder */}
                 <div className="w-full aspect-[16/10] bg-gradient-to-br from-[#1E3FA0]/40 to-[#12245A] border-b border-border-subtle/50 flex items-center justify-center overflow-hidden relative">
                   {project.image ? (
@@ -92,7 +96,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) =>
                   </div>
                 </div>
               </div>
-            );
+            </ScrollReveal>
+          );
           })}
         </div>
       </div>

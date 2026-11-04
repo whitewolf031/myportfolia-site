@@ -19,14 +19,22 @@ export const Navbar: React.FC<NavbarProps> = ({ profile }) => {
     { label: 'Aloqa', href: '#aloqa' },
   ];
 
-  const displayName = profile?.full_name ? `${profile.full_name.charAt(0)}. ${profile.full_name.split(' ')[1] || ''}_` : 'S. Ergashev_';
+  const fullName = profile?.full_name || 'Sardorbek Ergashev';
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-page/80 border-b border-border-subtle/50 transition-all">
       <div className="max-w-container mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#haqimda" className="font-mono text-lg font-semibold text-text-main tracking-tight hover:text-accent transition-colors">
-          {displayName}
+        {/* Logo matching Image 2 */}
+        <a
+          href="#haqimda"
+          className="flex items-center gap-2 group focus-visible:outline-none transition-transform duration-300 hover:scale-[1.03]"
+          aria-label={fullName}
+        >
+          <img
+            src="/logo-white.png"
+            alt={fullName}
+            className="h-11 sm:h-12 w-auto max-w-[140px] sm:max-w-[160px] object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_14px_rgba(90,176,255,0.45)]"
+          />
         </a>
 
         {/* Desktop Nav Links */}
