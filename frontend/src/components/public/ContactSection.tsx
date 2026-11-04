@@ -70,7 +70,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
   const telegramUser = profile?.telegram_username || '@Sardorbek_Ergashev';
   const emailAddr = profile?.email || '[Email]';
   const githubLink = profile?.github_url || '[Havola]';
-  const instagramLink = profile?.instagram_url;
+  const instagramLink = profile?.instagram_url || '[Havola]';
 
   return (
     <section id="aloqa" className="py-12 sm:py-20">
@@ -139,33 +139,31 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                   )}
                 </div>
 
-                {instagramLink && instagramLink !== '[Havola]' && (
-                  <div className="flex items-center gap-3">
-                    <Instagram size={16} className="text-accent" />
-                    <span className="text-text-muted">instagram:</span>
-                    {instagramLink.startsWith('http') ? (
-                      <a
-                        href={instagramLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline"
-                      >
-                        {instagramLink.replace(/^https?:\/\/(www\.)?instagram\.com\//, '@').replace(/\/$/, '') || 'instagram'}
-                      </a>
-                    ) : instagramLink.startsWith('@') ? (
-                      <a
-                        href={`https://instagram.com/${instagramLink.replace('@', '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent hover:underline"
-                      >
-                        {instagramLink}
-                      </a>
-                    ) : (
-                      <span className="text-text-main">{instagramLink}</span>
-                    )}
-                  </div>
-                )}
+                <div className="flex items-center gap-3">
+                  <Instagram size={16} className="text-accent" />
+                  <span className="text-text-muted">instagram:</span>
+                  {instagramLink.startsWith('http') ? (
+                    <a
+                      href={instagramLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      {instagramLink.replace(/^https?:\/\/(www\.)?instagram\.com\//, '@').replace(/\/$/, '') || 'instagram'}
+                    </a>
+                  ) : instagramLink.startsWith('@') ? (
+                    <a
+                      href={`https://instagram.com/${instagramLink.replace('@', '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      {instagramLink}
+                    </a>
+                  ) : (
+                    <span className="text-text-main">{instagramLink}</span>
+                  )}
+                </div>
               </div>
             </div>
 
