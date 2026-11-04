@@ -1,6 +1,8 @@
 import React from 'react';
 import { Testimonial } from '../../types';
 
+import { ScrollReveal } from '../common/ScrollReveal';
+
 interface TestimonialsSectionProps {
   testimonials: Testimonial[];
 }
@@ -11,32 +13,36 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testim
   return (
     <section id="fikrlar" className="py-12 sm:py-20">
       <div className="max-w-container mx-auto px-5 sm:px-8">
-        {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
-            06 / fikrlar
-          </span>
-          <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
-            Mijozlar nima deydi
-          </h2>
-        </div>
+        <ScrollReveal>
+          {/* Section Header */}
+          <div className="mb-8 sm:mb-12">
+            <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
+              05 / fikrlar
+            </span>
+            <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
+              Mijozlar nima deydi
+            </h2>
+          </div>
+        </ScrollReveal>
 
         {/* 2 cards in a row on desktop, 1 col on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7">
-          {testimonials.map((t) => (
-            <div key={t.id} className="card-base p-6 sm:p-7 flex flex-col justify-between">
-              <p className="font-body text-sm sm:text-base text-text-subtitle leading-relaxed italic mb-6">
-                "{t.quote}"
-              </p>
-              <div>
-                <h4 className="font-heading font-semibold text-base text-text-main">
-                  {t.author}
-                </h4>
-                <p className="font-body text-xs text-text-muted mt-0.5">
-                  {t.role_company}
+          {testimonials.map((t, index) => (
+            <ScrollReveal key={t.id} delayMs={index * 100}>
+              <div className="card-base p-6 sm:p-7 flex flex-col justify-between h-full cursor-default">
+                <p className="font-body text-sm sm:text-base text-text-subtitle leading-relaxed italic mb-6">
+                  "{t.quote}"
                 </p>
+                <div>
+                  <h4 className="font-heading font-semibold text-base text-text-main">
+                    {t.author}
+                  </h4>
+                  <p className="font-body text-xs text-text-muted mt-0.5">
+                    {t.role_company}
+                  </p>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

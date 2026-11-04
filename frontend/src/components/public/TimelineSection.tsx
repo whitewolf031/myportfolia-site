@@ -1,5 +1,6 @@
 import React from 'react';
 import { TimelineItem } from '../../types';
+import { ScrollReveal } from '../common/ScrollReveal';
 
 interface TimelineSectionProps {
   timeline: TimelineItem[];
@@ -18,9 +19,9 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ timeline }) =>
       : item.title;
 
     return (
-      <div key={item.id} className="relative pl-6 pb-8 border-l border-border-subtle last:border-l-0 last:pb-0">
+      <div key={item.id} className="relative pl-6 pb-8 border-l border-border-subtle last:border-l-0 last:pb-0 group">
         {/* Bullet Dot */}
-        <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent border-2 border-page" />
+        <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-accent border-2 border-page transition-transform duration-300 group-hover:scale-150 group-hover:shadow-[0_0_8px_#5AB0FF]" />
         
         {/* Period */}
         <span className="font-mono text-xs text-accent block mb-1">
@@ -28,7 +29,7 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ timeline }) =>
         </span>
 
         {/* Title */}
-        <h4 className="font-heading font-semibold text-base sm:text-lg text-text-main mb-1">
+        <h4 className="font-heading font-semibold text-base sm:text-lg text-text-main mb-1 transition-colors duration-200 group-hover:text-accent">
           {titleLine}
         </h4>
 
@@ -45,15 +46,17 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({ timeline }) =>
   return (
     <section id="tajriba" className="py-12 sm:py-20">
       <div className="max-w-container mx-auto px-5 sm:px-8">
-        {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
-            05 / tajriba va ta'lim
-          </span>
-          <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
-            Yo'lim
-          </h2>
-        </div>
+        <ScrollReveal>
+          {/* Section Header */}
+          <div className="mb-8 sm:mb-12">
+            <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
+              04 / tajriba va ta'lim
+            </span>
+            <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight">
+              Yo'lim
+            </h2>
+          </div>
+        </ScrollReveal>
 
         {/* Two columns on desktop, 1 on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">

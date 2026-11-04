@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { Send, CheckCircle2, AlertCircle, Loader2, SendHorizontal, Mail, Github, Instagram } from 'lucide-react';
 import { Profile } from '../../types';
 import { submitContact } from '../../api/client';
+import { ScrollReveal } from '../common/ScrollReveal';
 
 const contactSchema = z.object({
   name: z
@@ -74,20 +75,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
   return (
     <section id="aloqa" className="py-12 sm:py-20">
       <div className="max-w-container mx-auto px-5 sm:px-8">
-        {/* Contact Card */}
-        <div className="card-contact p-6 sm:p-10 lg:p-12 relative overflow-hidden">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <ScrollReveal>
+          {/* Contact Card */}
+          <div className="card-contact p-6 sm:p-10 lg:p-12 relative overflow-hidden">
             
-            {/* Left Info Column */}
-            <div className="lg:col-span-6 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
-                  07 / aloqa
-                </span>
-                <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight mb-4">
-                  Birga ishlaymizmi?
-                </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              
+              {/* Left Info Column */}
+              <div className="lg:col-span-6 flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-xs sm:text-sm text-accent uppercase tracking-wider block mb-2">
+                    06 / aloqa
+                  </span>
+                  <h2 className="font-heading font-semibold text-3xl sm:text-[40px] text-text-main leading-tight mb-4">
+                    Birga ishlaymizmi?
+                  </h2>
                 <p className="font-body text-sm sm:text-base text-text-subtitle leading-relaxed max-w-md mb-8">
                   Loyiha yoki hamkorlik taklifingiz bormi? Quyidagi forma orqali yozishingiz mumkin, men har doim aloqadaman.
                 </p>
@@ -283,7 +285,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
 
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </ScrollReveal>
+    </div>
+  </section>
+);
 };

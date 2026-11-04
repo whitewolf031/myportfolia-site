@@ -5,7 +5,6 @@ import { Navbar } from '../components/public/Navbar';
 import { HeroSection } from '../components/public/HeroSection';
 import { StatsSection } from '../components/public/StatsSection';
 import { SkillsSection } from '../components/public/SkillsSection';
-import { ServicesSection } from '../components/public/ServicesSection';
 import { ProjectsSection } from '../components/public/ProjectsSection';
 import { TimelineSection } from '../components/public/TimelineSection';
 import { TestimonialsSection } from '../components/public/TestimonialsSection';
@@ -66,7 +65,6 @@ export const HomePage: React.FC = () => {
         <HeroSection profile={profile} />
         <StatsSection stats={stats} />
         <SkillsSection skillGroups={skillGroups} />
-        <ServicesSection services={services} />
         <ProjectsSection projects={projects} />
         <TimelineSection timeline={timeline} />
         <TestimonialsSection testimonials={testimonials} />
